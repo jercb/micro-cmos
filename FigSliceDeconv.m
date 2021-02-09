@@ -52,6 +52,6 @@ for i = 1:4
 end
 
 subplot(1,4,4)
-annotation(f1,'line',[0.75 0.76], [0.1 0.1], 'linewidth', 3 );
+annotation(f1,'line',[0.748 0.765], [0.1 0.1], 'linewidth', 3 );
 annotation(f1,'textbox', [0.745 0.07 0.037 0.024],...
     'String','30 \mum', 'FitBoxToText','off', 'EdgeColor','none');
