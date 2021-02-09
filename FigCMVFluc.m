@@ -18,8 +18,8 @@ null{2} = newdev.mean_of_mat3(1:newF0);
 sdnull{1} = olddev.std_of_mat3(1:oldF0);
 sdnull{2} = newdev.std_of_mat3(1:newF0);
 
-hTitle{1} = '3T-APS CMV-Luc average reading (Difference)';
-hTitle{2} = '4T-APS CMV-Luc average reading (Difference)';
+hTitle{1} = 'Previous Device Average Reading (Difference)';
+hTitle{2} = 'New Device Average Reading (Difference)';
 
 for ij = 1:2
     p2 = subplot(1,2,ij);
@@ -46,7 +46,8 @@ for ij = 1:2
     set(get(get(eb1,'Annotation'),'LegendInformation'),'IconDisplayStyle','off');
     set(get(get(eb2,'Annotation'),'LegendInformation'),'IconDisplayStyle','off');
     
-    legend({'with cells', 'no cell'})
+    lgd = legend({'with cells', 'no cell'});
+    lgd.Location = 'best';
     title(hTitle{ij})
     xlabel('Minutes')
     ylabel('Pixel Value (DN)')
@@ -82,8 +83,8 @@ cell{2} = newdev.diff_Matrix(:,:, newF0+1:end);
 null{1} = olddev.diff_Matrix(:,:,1:oldF0);
 null{2} = newdev.diff_Matrix(:,:, 1:newF0);
 
-hTitle{1} = '3T-APS CMV-Luc Histogram (Difference)';
-hTitle{2} = '4T-APS CMV-Luc Histogram (Difference)';
+hTitle{1} = 'Previous Device Histogram (Difference)';
+hTitle{2} = 'New Device Histogram (Difference)';
 
 nbin = 200;
 
@@ -113,7 +114,8 @@ for ij = 1:2
     null_pdf = null_hist.Values;
     hellDist = sqrt(sum((sqrt(null_pdf/sum(null_pdf))...
         - sqrt(cell_pdf/sum(cell_pdf))).^2)) ./ sqrt(2);
-    legend({'with cells', 'no cell'})
+    lgd = legend({'with cells', 'no cell'});
+    lgd.Location = 'best';
     title(hTitle{ij})
     
     if ij == 1
@@ -160,8 +162,8 @@ null{2} = newdev.mean_of_mat4(1:newF0);
 sdnull{1} = olddev.std_of_mat4(1:oldF0);
 sdnull{2} = newdev.std_of_mat4(1:newF0);
 
-hTitle{1} = '3T-APS CMV-Luc average reading (Normalized)';
-hTitle{2} = '4T-APS CMV-Luc average reading (Normalized)';
+hTitle{1} = 'Previous Device Average Reading (Normalized)';
+hTitle{2} = 'New Device Average Reading (Normalized)';
 
 for ij = 1:2
     p2 = subplot(1,2,ij);
@@ -188,7 +190,8 @@ for ij = 1:2
     set(get(get(eb1,'Annotation'),'LegendInformation'),'IconDisplayStyle','off');
     set(get(get(eb2,'Annotation'),'LegendInformation'),'IconDisplayStyle','off');
     
-    legend({'with cells', 'no cell'})
+    lgd = legend({'with cells', 'no cell'});
+    lgd.Location = 'best';
     title(hTitle{ij})
     xlabel('Minutes')
     ylabel('Pixel Value (DN)')
@@ -277,10 +280,10 @@ end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 nFile = 4;
-data_list = {'No Cell\newline(3T-APS CMV-Luc)',...
-    'With Cells\newline(3T-APS CMV-Luc)',...
-    'No Cell\newline(4T-APS CMV-Luc)',...
-    'With Cells\newline(4T-APS CMV-Luc)'};
+data_list = {'No Cell\newline(Previous Device)',...
+    'With Cells\newline(Previous Device)',...
+    'No Cell\newline(New Device)',...
+    'With Cells\newline(New Device)'};
 
 f5 = figure( 'Units', 'normalized', 'Position', [0.1 0.25 0.8 0.47] );
 %custCMap = colorGradient([0.8500 0.3250 0.0980], [0 0.4470 0.7410], 100);

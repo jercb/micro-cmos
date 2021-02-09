@@ -2,7 +2,7 @@ clearvars
 close all
 load('Sensitivity.mat')
 
-f1 = figure( 'Units', 'normalized', 'Position', [0.1 0.25 0.5 0.45] );
+f1 = figure( 'Units', 'normalized', 'Position', [0.1 0.25 1 0.6] );
 
 x1 = olddev(:,1);
 x1 = [x1,x1];
@@ -44,26 +44,24 @@ set(get(get(eb_l(2),'Annotation'),'LegendInformation'),'IconDisplayStyle','off')
 set(get(get(eb_l(3),'Annotation'),'LegendInformation'),'IconDisplayStyle','off');
 set(get(get(eb_l(4),'Annotation'),'LegendInformation'),'IconDisplayStyle','off');
 
-lgd = legend({'New Device POF', 'New Device PWF',...
-    'Previous Device POF', 'Previous Device PWF'});
+lgd = legend({'4T-APS w/o filter', '4T-APS w/ filter',...
+    '3T-APS w/o filter', '3T-APS w/ filter'});
 lgd.Location = 'best';
-lgd.FontSize = 12;
 
 xlim([-0.25, 12.25])
-xlabel('Light power density (\muW / cm^2)')
+xlabel('Power Density (\muW / cm^2)')
 
 ylim([-500, 16000])
 ylabel('Device pixel value (DN)')
 
 set(gca,'FontSize', 24)
 set(gca,'LineWidth', 2)
-title('Sensitivity Comparison')
+title('Sensitivity comparison between 4T-APS and 3T-APS')
 legend boxoff
-set(gca, 'Position', [0.15 0.2 0.82 0.7])
+set(gca, 'Position', [0.0750 0.1263 0.9000 0.7987])
+f1Pos = get(gca, 'Position');
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-f1 = figure( 'Units', 'normalized', 'Position', [0.1 0.25 0.5 0.45] );
+f2 = figure( 'Units', 'normalized', 'Position', [0.1 0.25 1 0.6] );
 
 dash_l1b = plot(newdev_diff(:,1), newdev_diff(:,2), 'd-' ,...
     'Color', [0 0.4470 0.7410],...
@@ -81,17 +79,17 @@ uistack(eb_l, 'bottom')
 set(get(get(eb_l(1),'Annotation'),'LegendInformation'),'IconDisplayStyle','off');
 set(get(get(eb_l(2),'Annotation'),'LegendInformation'),'IconDisplayStyle','off');
 
-lgd = legend({'New Device (difference)', 'Previous Device (difference)'});
+lgd = legend({'4T-APS (difference)', '3T-APS (difference)'});
 lgd.Location = 'best';
 
 xlim([-0.25, 4.25])
-xlabel('Light power density (\muW / cm^2)')
+xlabel('Power Density (\muW / cm^2)')
 
 ylim([-500, 12000])
 ylabel('Device pixel value (DN)')
 
 set(gca,'FontSize', 24)
 set(gca,'LineWidth', 2)
-title('Sensitivity Comparison (Difference)')
+title('Sensitivity comparison between 4T-APS and 3T-APS (Difference) [zoomed in]')
 legend boxoff
-set(gca, 'Position', [0.15 0.2 0.81 0.7])
+set(gca, 'Position', f1Pos)
