@@ -9,7 +9,7 @@ load('Dark current.mat')
 for li = 1:2
     hAx(li).LineWidth = 2;
     hAx(li).FontSize = 24;
-    hAx(li).XLabel.String = 'Settling Time (Clocks)';
+    hAx(li).XLabel.String = 'Frame Time (ms)';
     hAx(li).YLabel.String = 'Dark Pixel Value (DN)';
     hAx(li).XLabel.FontSize = 24;
     hAx(li).YLabel.FontSize = 24;
@@ -22,8 +22,8 @@ eb_l = errorbar(hAx(1), newdev(:,1), newdev(:,2), newdev(:,3),...
 uistack(eb_l, 'bottom')
 set(get(get(eb_l,'Annotation'),'LegendInformation'),'IconDisplayStyle','off');
 
-hAx(1).XLim = [0, 1000];
-hAx(1).XTick = 0:200:1000;
+hAx(1).XLim = [0, 425];
+hAx(1).XTick = 0:200:425;
 hAx(1).YLim = [2000, 4000];
 hAx(1).YTick = 2000:400:4000;
 hAx(1).YTickLabel = num2cell(hAx(1).YTick);
@@ -40,8 +40,8 @@ eb_l = errorbar(hAx(2), olddev(:,1), olddev(:,2), olddev(:,3),...
 uistack(eb_l, 'bottom')
 set(get(get(eb_l,'Annotation'),'LegendInformation'),'IconDisplayStyle','off');
 
-hAx(2).XLim = [0, 1000];
-hAx(2).XTick = 0:200:1000;
+hAx(2).XLim = [0, 425];
+hAx(2).XTick = 0:200:425;
 hAx(2).YLim = [13000, 15000];
 hAx(2).YTick = 13000:400:15000;
 hAx(2).YTickLabel = num2cell(hAx(2).YTick);
@@ -56,13 +56,13 @@ lgd = legend({'New Device', 'Previous Device'});
 lgd.Location = 'best';
 
 annotation(f1,'textbox', [0.25 0.532 0.0847 0.033],...
-    'String',{'rate of increase = 0.5599'}, 'EdgeColor','none',...
+    'String',{'rate of increase = 1.4400'}, 'EdgeColor','none',...
     'FitBoxToText','on', 'FontSize', 24, 'Color', hline2.Color);
-
+%0.5599
 annotation(f1,'textbox', [0.25 0.25 0.0764 0.0333],...
-    'String',{'rate of increase = 0.1187'}, 'EdgeColor','none',...
+    'String',{'rate of increase = 0.3054'}, 'EdgeColor','none',...
     'FitBoxToText','on', 'FontSize', 24, 'Color', hline1.Color);
-
+%0.1187
 legend boxoff
 
 %hAx(1).Position = [0.0700 0.1100 0.8550 0.8150];
@@ -106,8 +106,8 @@ title('Comparison of Temporal Noise')
 lgd = legend([dash_l1, dash_l2], {'New Device', 'Previous Device'});
 lgd.Location = 'best';
 
-xlim([-15, 1040])
-xlabel('Settling Time (Clocks)')
+xlim([-15, 425])
+xlabel('Frame Time (ms)')
 
 ylim([0, 8])
 ylabel('Temporal Noise (DN)')
